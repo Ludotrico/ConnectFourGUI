@@ -1,7 +1,9 @@
 import java.io.*;
 import java.util.Scanner;
 
+//Base class for Connect Four Logic
 public class TicTacToe {
+    //Constructor
     public TicTacToe(int n) {
         board = new int[n][n];
  
@@ -9,7 +11,8 @@ public class TicTacToe {
         turn = 1;
         gameStatus = 0;
     }
-
+    
+    //Current player will make move if possible
     public boolean makeMove(int x, int y) {
         if (board[x][y] != 0) {
             return false;
@@ -27,6 +30,7 @@ public class TicTacToe {
         return turn;
     }
 
+    //Returns 1 if player 1 won, 2 if player 2 won, -1 if it is a Tie
     public int gameStatus() {
         boolean [] playerWinStatus = new boolean[] {false, false, false};
 
@@ -97,7 +101,8 @@ public class TicTacToe {
         else { gameStatus = 0; }
         return gameStatus;
     }
-
+    
+    //Asseses wether the game is over or not
     public boolean gameOver() {
         gameStatus = gameStatus();
         if (gameStatus == 0)
@@ -105,6 +110,7 @@ public class TicTacToe {
         return true;
     }
 
+    //Overrides toString
     public String toString() {
         String s = new String();
         s = "";
@@ -117,6 +123,7 @@ public class TicTacToe {
         return s;
     }
 
+    //Loads board from .txt file
     public void loadBoard(String fileName) {
         try {
             BufferedReader lineReader = new BufferedReader(new FileReader(fileName));
@@ -154,6 +161,7 @@ public class TicTacToe {
         }
     }
 
+    //Saves board to .txt file
     public void saveBoard(String fileName) {
         String s = toString();
 
@@ -168,6 +176,7 @@ public class TicTacToe {
         }
     }
 
+    //Checks who inhabites game board position 
     public int checkPosition(int x, int y) {
         if( (x >= boardSize) || (y >= boardSize)) {
             return -1;
