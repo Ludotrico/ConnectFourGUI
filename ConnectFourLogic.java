@@ -1,8 +1,13 @@
+//This class inherits from TicTacToe base class
+//Most implentation can be found there
+
 public class ConnectFourLogic extends TicTacToe {
+    //Constructor
     public ConnectFourLogic() {
         super(6);
     }
 
+    //Current player makes move if possible
     public boolean makeMove(int y) {
         int lastEmptyRow = -1;
         for(int [] row : board) {
@@ -21,6 +26,7 @@ public class ConnectFourLogic extends TicTacToe {
         return true;
     }
     
+    //Returns the index of the last empty row in a column, -1 if column is full
     public int emptyRow(int y) {
         int lastEmptyRow = -1;
         for(int [] row : board) {
@@ -30,6 +36,7 @@ public class ConnectFourLogic extends TicTacToe {
         return lastEmptyRow;
     }
 
+    //Returns -1 if the current game state is a Tie, 1 if player 1 won, 2 if player 2 won
     public int gameStatus() {
         boolean [] playerWinStatus = new boolean[] {false, false, false};
 
